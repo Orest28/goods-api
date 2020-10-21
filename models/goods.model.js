@@ -1,4 +1,4 @@
-import mongoose from '../db/db.connection';
+import mongoose from '../db/db.connection.js';
 
 const Schema = mongoose.Schema;
 

@@ -1,17 +1,18 @@
-import { response } from 'express';
-import GoodsModel from '../models/goods.model';
+import GoodsModel from '../models/goods.model.js';
 
-const findProductByName = productName => {
+export const findProductByName = async productName => {
     let found = await GoodsModel.find({name: productName});
     return found;
 }
 
-const findAllProducts = () => {
+export const findAllProducts = async () => {
+    console.log("hello");
     let allProducts = await GoodsModel.find();
     return allProducts;
 }
 
-const createProduct = (productJSON) => {
+export const createProduct = async (productJSON) => {
+    console.log("hello from createProduct, productJSON: " + productJSON);
     let newProduct = new GoodsModel(productJSON);
     let savedProduct = await newProduct.save();
     return savedProduct;

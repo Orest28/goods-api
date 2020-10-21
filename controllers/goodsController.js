@@ -1,16 +1,26 @@
-import {findProductByName, findAllProducts, createProduct} from '../db/goods.crud';
+import {findProductByName, findAllProducts, createProduct} from '../db/goods.crud.js';
+
+import { findCategoryByName } from '../db/category.crud.js'
 
 
-async const find = (req, res) => {
+export const find = async (req, res) => {
     res.json(findProductByName(req.params.name));
 }
 
-async const findAll = (req,res) => {
-    res.json(findAllProducts())
+export const findAll = async (req,res) => {
+    console.log("hello from conteroller")
+    res.json(await findAllProducts())
 }
 
-async const create = (req, res) => {
-    res.json(createProduct(req.body))
+export const create = async (req, res) => {
+    
+    const categoryResult = await findCategoryByName(req.body.category);
+
+    console.log(categoryResult)
+
+    req.body.category = categoryResult;
+
+    res.json(await createProduct(req.body))
 }
 
 export default {find, findAll, create};
