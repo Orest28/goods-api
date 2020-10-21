@@ -13,8 +13,6 @@ export const findAllCategories = async () => {
 }
 
 export const findCategoryByName = async (name) => {
-
-    console.log("hello from findCategoryByName");
     let category = await categoryModel.findOne({'name' : name}, (err, result) => {
         if(err) {
             console.log(err);

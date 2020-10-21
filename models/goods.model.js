@@ -8,6 +8,10 @@ let GoodsSchema = new Schema({
     category: {
         type: Schema.Types.ObjectId,
         ref: "category"
+    },
+    provider: {
+        type: Schema.Types.ObjectId,
+        ref: "provider"
     }
 })
 

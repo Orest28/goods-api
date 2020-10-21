@@ -1,8 +1,20 @@
 import ProviderModel from '../models/provider.model.js';
+import mongoose from 'mongoose';
 
 export const findProviderByCompany = async providerCompany => {
-    let found = await ProviderModel.find({company: providerCompany});
-    return found;
+    let provider = await ProviderModel.findOne({'company' : providerCompany}, (err, result) => {
+        if(err) {
+            console.log(err);
+        } else {
+            return mongoose.Types.ObjectId(result._id);
+        }
+    })
+
+    return provider;
+}
+
+export const findProviderById = async (id) => {
+    return await ProviderModel.findById(id);
 }
 
 export const findAllProviders = async () => {

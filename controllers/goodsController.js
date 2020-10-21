@@ -1,6 +1,7 @@
 import {findProductByName, findAllProducts, createProduct} from '../db/goods.crud.js';
 
 import { findCategoryByName } from '../db/category.crud.js'
+import { findProviderByCompany } from '../db/provider.crud.js'
 
 
 export const find = async (req, res) => {
@@ -8,17 +9,16 @@ export const find = async (req, res) => {
 }
 
 export const findAll = async (req,res) => {
-    console.log("hello from conteroller")
     res.json(await findAllProducts())
 }
 
 export const create = async (req, res) => {
     
     const categoryResult = await findCategoryByName(req.body.category);
-
-    console.log(categoryResult)
+    const providerResult = await findProviderByCompany(req.body.provider);
 
     req.body.category = categoryResult;
+    req.body.provider = providerResult;
 
     res.json(await createProduct(req.body))
 }

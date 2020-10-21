@@ -6,8 +6,9 @@ export const findProductByName = async productName => {
 }
 
 export const findAllProducts = async () => {
-    console.log("hello");
-    let allProducts = await GoodsModel.find();
+    let allProducts = await GoodsModel.find()
+                                    .populate("category")
+                                    .populate("provider");
     return allProducts;
 }
 
