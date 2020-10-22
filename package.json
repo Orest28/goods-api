@@ -2,11 +2,13 @@
   "name": "goods-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "type": "module",
   "scripts": {
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "babel-node server.js"
+    "start": "node --no-warnings --experimental-modules --es-module-specifier-resolution=node server.js"
   },
   "repository": {
     "type": "git",
@@ -20,13 +22,18 @@
   "homepage": "https://github.com/Orest28/goods-api#readme",
   "dependencies": {
     "babel-cli": "^6.26.0",
+    "bcrypt": "^5.0.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "eslint-config-airbnb": "^18.2.0",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.6.2",
     "mongoose": "^5.10.9"
   },
   "devDependencies": {
+    "eslint": "^7.11.0",
+    "eslint-plugin-import": "^2.22.1",
     "nodemon": "^2.0.6"
   }
 }
