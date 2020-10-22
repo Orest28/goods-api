@@ -19,9 +19,27 @@ export const create = async (req, res) => {
     const providerResult = await findProviderByCompany(req.body.provider);
     const measurementResult = await findMeasurementByType(req.body.measurement);
 
-    req.body.category = categoryResult;
-    req.body.provider = providerResult;
-    req.body.measurement = measurementResult;
+    const objectError = {}
+
+    if(categoryResult.error !== "") {
+        objectError.categoryError = categoryResult.error;
+    }
+
+    if(providerResult.error !== "") {
+        objectError.providerError = providerResult.error;
+    } 
+
+    if(measurementResult.error !== "") {
+        objectError.measurementError = measurementResult.error;
+    }
+
+    if(objectError) {
+        return res.json(objectError);
+    }
+
+    req.body.category = categoryResult.result;
+    req.body.provider = providerResult.result;
+    req.body.measurement = measurementResult.result;
 
     res.json(await createProduct(req.body))
 }

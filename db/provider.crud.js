@@ -2,15 +2,24 @@ import ProviderModel from '../models/provider.model.js';
 import mongoose from 'mongoose';
 
 export const findProviderByCompany = async providerCompany => {
-    let provider = await ProviderModel.findOne({'company' : providerCompany}, (err, result) => {
+    
+    let providerObject = {
+        error : "",
+        result: mongoose.Types.ObjectId(1)
+    }
+
+    await ProviderModel.findOne({'company' : providerCompany}, (err, result) => {
         if(err) {
             console.log(err);
+        } 
+        if(result) {
+            providerObject.result = mongoose.Types.ObjectId(result._id);
         } else {
-            return mongoose.Types.ObjectId(result._id);
+            providerObject.error = "The provider not found";
         }
     })
 
-    return provider;
+    return providerObject;
 }
 
 export const findProviderById = async (id) => {

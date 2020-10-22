@@ -13,15 +13,24 @@ export const findAllMeasurement = async () => {
 }
 
 export const findMeasurementByType = async (type) => {
-    let measurement = await measurementModel.findOne({'type' : type}, (err, result) => {
+    
+    let measurementObject = {
+        error : "",
+        result: mongoose.Types.ObjectId(1)
+    }
+    
+    await measurementModel.findOne({'type' : type}, (err, result) => {
         if(err) {
             console.log(err);
+        }
+        if(result) {
+            measurementObject.result = mongoose.Types.ObjectId(result._id);
         } else {
-            return mongoose.Types.ObjectId(result._id);
+            measurementObject.error = "The measurement not found";
         }
     })
 
-    return measurement;
+    return measurementObject;
 }
 
 export default {createMeasurement, findAllMeasurement, findMeasurementByType};

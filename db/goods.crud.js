@@ -8,7 +8,8 @@ export const findProductByName = async productName => {
 export const findAllProducts = async () => {
     let allProducts = await GoodsModel.find()
                                     .populate("category")
-                                    .populate("provider");
+                                    .populate("provider")
+                                    .populate("measurement");
     return allProducts;
 }
 

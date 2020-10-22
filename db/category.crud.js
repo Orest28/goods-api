@@ -13,15 +13,24 @@ export const findAllCategories = async () => {
 }
 
 export const findCategoryByName = async (name) => {
-    let category = await categoryModel.findOne({'name' : name}, (err, result) => {
+
+    let categoryObject = {
+        error : "",
+        result: mongoose.Types.ObjectId(1)
+    }
+
+    await categoryModel.findOne({'name' : name}, (err, result) => {
         if(err) {
-            console.log(err);
+            console.log(err)
+        }
+        if(result) {
+            categoryObject.result = mongoose.Types.ObjectId(result._id);
         } else {
-            return mongoose.Types.ObjectId(result._id);
+            categoryObject.error = "The category not found";
         }
     })
 
-    return category;
+    return categoryObject;
 }
 
 export default {createCategory, findAllCategories};
