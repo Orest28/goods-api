@@ -13,7 +13,6 @@ export const findAllProducts = async () => {
 }
 
 export const createProduct = async (productJSON) => {
-    console.log("hello from createProduct, productJSON: " + productJSON);
     let newProduct = new GoodsModel(productJSON);
     let savedProduct = await newProduct.save();
     return savedProduct;
