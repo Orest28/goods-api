@@ -1,9 +1,9 @@
 import express from 'express';
-import goodsRouter from './goods.routes';
-import categoryRouter from './categories.routes';
-import providerRouter from './providers.routes';
-import measurementRouter from './measurements.routes';
-import authRouter from './users.routes';
+import goodsRouter from './goods.routes.js';
+import categoryRouter from './categories.routes.js';
+import providerRouter from './providers.routes.js';
+import measurementRouter from './measurements.routes.js';
+import authRouter from './users.routes.js';
 
 const rootRouter = express.Router();
 

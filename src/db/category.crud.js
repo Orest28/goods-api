@@ -1,5 +1,5 @@
-import CategoryModel from '../models/category.model';
-import mongoose from './db.connection';
+import CategoryModel from '../models/category.model.js';
+import mongoose from './db.connection.js';
 
 export const createCategory = async (categoryJSON) => {
   const newCategory = new CategoryModel(categoryJSON);

@@ -1,4 +1,4 @@
-import { findAllProviders, createProvider } from '../db/provider.crud';
+import { findAllProviders, createProvider } from '../db/provider.crud.js';
 
 export const findAll = async (req, res) => {
   res.json(await findAllProviders());

@@ -1,5 +1,5 @@
-import MeasurementModel from '../models/measurement.model';
-import mongoose from './db.connection';
+import MeasurementModel from '../models/measurement.model.js';
+import mongoose from './db.connection.js';
 
 export const createMeasurement = async (measurementJSON) => {
   const newMeasurement = new MeasurementModel(measurementJSON);

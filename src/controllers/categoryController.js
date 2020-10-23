@@ -1,4 +1,4 @@
-import { findAllCategories, createCategory } from '../db/category.crud';
+import { findAllCategories, createCategory } from '../db/category.crud.js';
 
 export const findAll = async (req, res) => {
   res.json(await findAllCategories());

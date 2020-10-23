@@ -1,4 +1,4 @@
-import { findAllMeasurement, createMeasurement } from '../db/measurement.crud';
+import { findAllMeasurement, createMeasurement } from '../db/measurement.crud.js';
 
 export const findAll = async (req, res) => {
   res.json(await findAllMeasurement());

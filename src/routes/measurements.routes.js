@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { findAll, create } from '../controllers/measurementController';
+import { findAll, create } from '../controllers/measurementController.js';
 
 const router = express.Router();
 

@@ -1,6 +1,6 @@
 import express from 'express';
 
-import { findAll, create } from '../controllers/providerController';
+import { findAll, create } from '../controllers/providerController.js';
 
 const router = express.Router();
 
